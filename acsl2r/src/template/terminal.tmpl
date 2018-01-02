@@ -1,0 +1,18 @@
+﻿if (F)
+{
+  parameters <- calculate_variables(parameters)
+  
+  with(parameters, {
+    with(as.data.frame(solution), {
+  
+      # TERMINAL
+<% computationData.forEach(function(lines) { lines.forEach(function(line) { %><%= line %>
+<% });}); if(0 < terminalEndSectionComments.length) { %>
+<%= terminalEndSectionComments %>
+<% } %>      
+      # plot(time, <%= lastOutput %>, type = "l", xlab = "time [units]", ylab = "[m]", main = "[main]")
+      
+      # END ! TERMINAL
+    })
+  })
+}

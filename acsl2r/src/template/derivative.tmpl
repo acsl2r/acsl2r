@@ -1,0 +1,22 @@
+﻿derivative = function(t, y, parameters, ...)
+{
+  with(parameters,
+  {<% integAssignments.forEach(function(ia, i) { %>
+    <%= ia.stateId %> <- y[<%= (i+1) %>]<% }); %>
+
+<% computationData.forEach(function(lines) { lines.forEach(function(line, i) { %><%= line %><% if(i == (lines.length - 1)) { %>
+<% } %>
+<% });}); if(0 < derivativeEndSectionComments.length) { %>
+<%= derivativeEndSectionComments %>
+<% } %>
+    list(c(
+      # pack and return derivatives<% integAssignments.forEach(function(ia, i) { %>
+      <%= ia.derivativeId %><% if(i < (integAssignments.length-1)) {%>,<% } %><% }); %>
+    ), c(
+      # pack and return outputs<% outputs.forEach(function(o, i) { %>
+      <% if(i > 0) {%>#, <% } else { %>#  <% } %><%= o %> = unname(<%= o %>)<% }); %>
+      )
+    ) # end list
+
+  }) # end with
+}

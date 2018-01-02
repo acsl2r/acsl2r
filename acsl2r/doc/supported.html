@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Supported Features - ACSL2R</title>
+</head>
+<body>
+  <pre>
+PROGRAM
+
+  ! Supported features are shown below
+
+  INITIAL
+
+    VARIABLE T ... ! currently ignored
+
+    PARAMETER(sym = 123) ! converted to simple assignment
+
+    CONSTANT x = 123
+    CONSTANT y = 456, z = 789 
+
+    SCHEDULE dis1.AT.123
+
+    IF (test) x = 456
+
+    IF (y .GT. z) THEN ! also .EQ. .AND. etc.
+      x = 456
+    ELSE
+      x = 789
+    END
+
+    TABLE tab ... ! one independent variable only
+
+    DIMENSION arr(123) ! also REAL DOUBLEPRECISION INTEGER LOGICAL CHARACTER
+
+    DO 10 i = 1
+    ...
+    10: CONTINUE
+
+    CALL subr() ! currently ignored
+
+
+  END
+
+  DYNAMIC
+
+    ALGORITHM ialg = 2 ! currently ignored
+    MINTERVAL mint = 123 ! currently ignored
+    MAXTERVAL maxt = 123 ! currently ignored
+    CINTERVAL cint = 123
+    NSTEPS nstp = 123 ! currently ignored
+    
+    DISCRETE dis1
+
+      ! as INITIAL
+
+      SCHEDULE dis2.AT.456
+
+    END
+
+    DISCRETE dis2
+
+      INTERVAL int2 = 24
+
+    END
+
+    DERIVATIVE
+
+      ! as INITIAL
+    
+      PROCEDURAL(a = b)
+        ...
+      END
+  
+      state = INTEG(deriv, initial)
+
+    END
+
+  END
+
+  TERMINAL
+
+    ! as INITIAL
+
+  END
+
+END
+</pre>
+</body>
+</html>

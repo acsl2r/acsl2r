@@ -1,0 +1,64 @@
+﻿<%= header %>
+<% if(0 < headerComments.length) { %>
+<%= headerComments %>
+<% } %>
+#pragma exec run_model parameters
+
+if (!require(deSolve))
+{
+  stop("The deSolve package is required. Please install it.")
+}
+<% if(0 < initialComments.length) { %>
+<%= initialComments %>
+<% } %>
+# INITIAL
+
+<%= assignParameters %>
+
+<%= calculateVariables %>
+
+# END!INITIAL
+<% if(requiresPulseFunction) { %>
+pulse <- function(t, tz, p, w)
+{
+  if(t < tz) return(0)
+  t <- t - tz
+  t <- t %% p
+  return(ifelse(t <= w, 1, 0))
+}<%}%>
+<% if(requiresStepFunction) { %>
+tzstep <- function(t, tz)
+{
+  y <- ifelse(t < tz, 0, 1)
+  return(y)
+}<%}%>
+<% if(0 < dynamicComments.length) { %>
+<%= dynamicComments %>
+<% } %>
+# DYNAMIC
+<% if(0 < derivativeComments.length) { %>
+<%= derivativeComments %>
+<% } %>
+# DERIVATIVE
+
+<%= derivative %>
+
+<% if(!!eventHandler) { %><%= eventHandler %><% } %>
+
+<%= runModel %>
+
+parameters <- assign_parameters()
+solution <- run_model(parameters)
+<% if(0 < dynamicEndSectionComments.length) { %>
+<%= dynamicEndSectionComments %>
+<% }; if(0 < programEndSectionComments.length) { %>
+<%= programEndSectionComments %>
+<% } %>
+# END ! DERIVATIVE
+# END ! DYNAMIC
+# END ! PROGRAM
+<% if(0 < footerComments.length) { %>
+<%= footerComments %><% } %>
+<% if(0 < terminalComments.length) { %>
+<%= terminalComments %><% } %>
+<%= terminal %>

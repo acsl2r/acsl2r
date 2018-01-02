@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react",
+    "module": "commonjs",
+    "outDir": "./dist/",
+    "lib": [ "es2015", "dom" ],
+    "allowJs": true, 
+    "skipLibCheck": true
+  },
+
+  "include": [
+    "./src/**/*"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ],
+
+  "compileOnSave": true
+}

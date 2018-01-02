@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>ACSL2R</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="./dist/libcss/bootstrap.min.css">
+  <link rel="stylesheet" href="./dist/bundle.min.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1 class="display-4">ACSL2R</h1>
+        <p class="lead">Convert your ACSL scripts to equivalent R code.</p>
+      </div>
+
+      <div>
+        <pre id="preR"></pre>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+
+          <div>
+            <label class="btn btn-primary btn-file">
+              Browse for .CSL files<input id="fiSelectCSLFiles" type="file" style="display: none;" multiple>
+            </label>
+          </div>
+
+          <div style="margin-bottom: 0.5rem;">
+            <ul id="ulSelectedCSLFiles" class="list-group"></ul>
+          </div>
+
+          <div>
+            <button id="btnConvert" type="button" class="btn btn-primary" style="display: none;">Convert</button>
+            <img id="imgConverting" src="dist/image/chasingspheres.gif" alt="Converting..." style="display: none;" />
+          </div>
+        </div>
+
+        <div class="col-8">
+
+          <div id="dvReadMe" class="card card-inverse" style="background-color: #333; border-color: #333;">
+            <div class="card-header">
+              Before you click anything...
+            </div>
+            <div class="card-block">
+              <h3 class="card-title">YOU REALLY SHOULD READ THIS</h3>
+              <p class="card-text">This service is offered as is. The developers offer no guarantee, nor accept liability of any kind.</p>
+              <p class="card-text">Use the generated code at your own risk. Before use, you should carefully check the logic and content of your converted scripts. Some conversions may require you to edit the code before it will execute successfully in R.</p>
+              <p class="card-text">This tool is in permanent alpha. It is unlikely ever to support the entire ACSL language. It will be upgraded on a case-by-case basis. Your code is not sent to our server &mdash; the conversion takes place in your browser. Caution: by selecting multiple scripts for conversion, multiple cores on your machine will be utilised (and potentially monopolised). Conversion of a large script may take several minutes. Correct functioning of this tool requires that your browser be the latest version. Microsoft Internet Explorer (any version) is not supported.</p>
+              <p class="card-text">
+                To avoid disappointment (and being presented with errors) when using this tool, please review <a href="./doc/supported.html" target="_blank">what is supported</a>
+                and <a href="./doc/notsupported.html" target="_blank">what is NOT supported</a>.
+              </p>
+            </div>
+          </div>
+
+          <div id="accConvertedFiles" role="tablist" aria-multiselectable="true" class="no-transition" style="display: none; margin-bottom: 0.5rem;">
+          </div>
+
+          <div>
+            <button id="btnDownloadAll" type="button" class="btn btn-primary" style="display: none;">Download All</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <span class="text-muted small"><a href="https://github.com/acsl2r/acsl2r" target="_blank">Source&nbsp;Repo</a></span>
+        </div>
+        <div class="col-8">
+          <span class="text-muted small">Conversion failed or code incorrect? <a href="https://github.com/acsl2r/acsl2r/issues" target="_blank">Tell us about it</a></span>
+        </div>
+        <div class="col-2 text-right">
+          <span id="spnVersion" class="text-muted small"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dependencies -->
+  <script src="./dist/libjs/es5-shim.min.js"></script>
+  <script src="./dist/libjs/es6-shim.min.js"></script>
+  <script src="./dist/libjs/jquery.min.js"></script>
+  <script src="./dist/libjs/tether.min.js"></script>
+  <script src="./dist/libjs/bootstrap.min.js"></script>
+
+  <!-- Main -->
+  <script src="./dist/home.min.js"></script>
+
+  <script type="text/template" class="selected-csl-file">
+    <li class="list-group-item justify-content-between" data-csl-file-id="<%- id %>">
+      <div class="container">
+        <div class="row">
+          <div class="col-10" style="padding-left: 0;">
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%- fileName %></div>
+          </div>
+          <div class="col-2" style="padding-right: 0;">
+            <button class="btn btn-danger btn-sm">X</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </script>
+
+  <script type="text/template" class="converted-csl-file">
+    <div class="card" data-csl-file-id="<%- id %>">
+      <div class="card-header" role="tab" id="ccfHeading<%- index %>">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" data-parent="#accConvertedFiles" href="#ccfCollapse<%- index %>" aria-expanded="false" aria-controls="ccfCollapse<%- index %>">
+            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; line-height: 1.8rem;"><%- fileName %></span>
+          </a>
+        </h5>
+      </div>
+      <div id="ccfCollapse<%- index %>" class="collapse" role="tabpanel" aria-labelledby="ccfHeading<%- index %>">
+        <div class="card-block small">
+          <pre><code style="white-space: pre-wrap;"><%- code %></code></pre>
+          <div>
+            <button type="button" class="btn btn-primary">Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!--<script type="text/template" class="csl-ex">
+    PROGRAM
+
+      INITIAL
+
+      END
+
+      DYNAMIC
+
+        DERIVATIVE
+
+        END
+
+      END
+
+    END
+  </script>-->
+  
+</body>
+</html>

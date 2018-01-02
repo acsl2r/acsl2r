@@ -1,0 +1,17 @@
+﻿event_handler <- function(t, y, parameters, ...)
+{
+  with(parameters, 
+  {<% integAssignments.forEach(function(ia, i) { %>
+    <%= ia.stateId %> <- y[<%= (i+1) %>]<% }); %>
+  <% events.forEach(function(e, i) { %>
+    if (<%= e.test %>)
+    {<% e.computationData.forEach(function(lines) { lines.forEach(function(line) { %>
+<%= line %><% });});%>      
+    }
+    <% }); %>
+    return(c(<% integAssignments.forEach(function(ia, i) { %>
+      <%= ia.stateId %><% if(i < (integAssignments.length - 1)) {%>,<% } %><% }); %>
+    ))
+
+  })  
+}

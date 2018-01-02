@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Features Not Supported - ACSL2R</title>
+</head>
+<body>
+  <pre>
+PROGRAM
+
+  !!! All features shown below are NOT SUPPORTED !!!
+
+  ! Note: This list is not an exhaustive. 
+  
+  ! Tip: If you get parsing errors, try commenting out the offending parts of your code. 
+
+  INITIAL
+    
+    ! conditional schedule
+    IF(test)
+      SCHEDULE name.AT.tvar
+
+    ! conditional termt
+    IF(test)
+      TERMT(...)
+
+    ! TABLE with more than one independent variable
+    TABLE myTable, 2, ...
+
+    ! Debugging
+    LOGD()
+
+    ! GoTo/Label
+    GO TO MYLABEL
+    MYLABEL:CONTINUE
+
+  END
+
+  DYNAMIC
+
+    DISCRETE
+
+      ! as INITIAL
+
+    END
+
+    DERIVATIVE
+
+      ! as INITIAL
+
+      ! implicit integration
+      z = IMPLC(r, zic)
+
+      ! conditional integration
+      IF(test .EQ. true)
+        x = INTEG(y, 0.)
+
+    END
+
+  END
+
+  TERMINAL
+
+    ! as INITIAL
+
+  END
+
+END
+</pre>
+</body>
+</html>

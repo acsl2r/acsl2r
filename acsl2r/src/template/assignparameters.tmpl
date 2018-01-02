@@ -1,0 +1,7 @@
+﻿assign_parameters = function()
+{
+<% parameterAssignmentData.forEach(function(lines) { lines.forEach(function(line, i) {%><%= line %><% if(i == (lines.length - 1)) { %>
+<% } %>
+<% });}); %>  # return all variables in this function's environment
+  as.list(sys.frame(sys.nframe()))
+}

@@ -1,0 +1,39 @@
+﻿run_model <- function(parameters)
+{
+  parameters <- calculate_variables(parameters)
+
+  with(parameters, {
+
+    TSTART <- 0.0
+    times <- seq.int(TSTART, <%= tStopParamName %>, <%= cIntParamName %>)
+
+    y <- c(<% integAssignments.forEach(function(ia, i) { %>
+      <%= ia.stateId %> = <%= ia.initialValue %><% if(i < (integAssignments.length-1)) {%>,<% } %><% }); %>
+      )
+<% if(!!eventTimes) { %>
+    eventTimes <- c(<%= eventTimes %>)
+    eventTimes <- sort(unique(eventTimes))
+    
+    times <- c(times, eventTimes)
+    times <- sort(unique(times))
+
+    solution <- deSolve::ode(
+      y, 
+      times, 
+      derivative, 
+      parameters, 
+      events = list(func = event_handler, time = eventTimes),
+      method = "lsodes"
+      )
+<% } else { %>
+    solution <- deSolve::ode(
+      y, 
+      times, 
+      derivative, 
+      parameters, 
+      method = "lsodes"
+      )
+<% } %>
+    return(as.matrix(unclass(solution)))
+  })
+}

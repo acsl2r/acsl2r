@@ -1,0 +1,13 @@
+﻿calculate_variables = function(parameters)
+{
+  with(parameters,
+  {
+<% computationData.forEach(function(lines) { lines.forEach(function(line, i) { %><%= line %><% if(i == (lines.length - 1)) { %>
+<% } %>
+<% });}); if(0 < initialEndSectionComments.length) { %>
+<%= initialEndSectionComments %>
+<% } %>    # return all variables in this function's environment
+    as.list(sys.frame(sys.nframe()))
+
+  }) # end with
+}

@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C35E0A29-B03F-4FEB-8B44-9140998DDA4B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>acsl2r</RootNamespace>
+    <AssemblyName>acsl2r</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\image\chasingspheres.gif" />
+    <Content Include="dist\libcss\bootstrap.min.css" />
+    <Content Include="dist\libjs\bootstrap.min.js" />
+    <Content Include="dist\libjs\es5-shim.min.js" />
+    <Content Include="dist\libjs\es6-shim.min.js" />
+    <Content Include="dist\libjs\jquery.min.js" />
+    <Content Include="dist\libjs\tether.min.js" />
+    <Content Include="doc\notsupported.html" />
+    <Content Include="doc\supported.html" />
+    <Content Include="src\template\derivative.tmpl" />
+    <Content Include="src\template\terminal.tmpl" />
+    <Content Include="src\template\eventhandler.tmpl" />
+    <None Include="src\template\calculatevariables.tmpl" />
+    <None Include="src\template\rscript.tmpl" />
+    <Content Include="favicon.ico" />
+    <Content Include="grammar\acsl\index.js" />
+    <Content Include="packages.config" />
+    <Content Include="package.json" />
+    <Content Include="grammar\acsl\AcslLexer.js" />
+    <Content Include="grammar\acsl\AcslListener.js" />
+    <Content Include="grammar\acsl\AcslParser.js" />
+    <Content Include="grammar\acsl\AcslVisitor.js" />
+    <Content Include="style\index.css" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <Content Include="dist\libcss\bootstrap.min.css.map" />
+    <Content Include="dist\libjs\jquery.min.map" />
+    <Antlr4 Include="grammar\Acsl.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>acsl2r.grammar</CustomToolNamespace>
+    </Antlr4>
+    <Content Include="grammar\acsl.bat" />
+    <Content Include="grammar\antlr4.bat" />
+    <Content Include="grammar\grun.bat" />
+    <None Include="src\template\assignparameters.tmpl" />
+    <Content Include="src\template\runmodel.tmpl" />
+    <Content Include="grammar\acsl\Acsl.tokens" />
+    <Content Include="grammar\acsl\AcslLexer.tokens" />
+    <None Include="Properties\PublishProfiles\toOP.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\component\acsl2rlistener.ts" />
+    <TypeScriptCompile Include="src\component\acslerrorlistener.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\docontinuesection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\expressionbase.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\stepexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\texpression.ts" />
+    <TypeScriptCompile Include="src\component\error.ts" />
+    <TypeScriptCompile Include="src\component\rscriptgenerator.ts" />
+    <TypeScriptCompile Include="src\component\acsl2rparser.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\arraystatement.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\arrayexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\tablestatement.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\stringexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\fnexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\comment.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\booleanexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\proceduralsection.ts" />
+    <TypeScriptCompile Include="src\component\rscript\rscript.ts" />
+    <TypeScriptCompile Include="src\component\rscript\terminal.ts" />
+    <TypeScriptCompile Include="src\component\rscript\runmodel.ts" />
+    <TypeScriptCompile Include="src\component\rscript\eventhandler.ts" />
+    <TypeScriptCompile Include="src\component\rscript\derivative.ts" />
+    <TypeScriptCompile Include="src\component\rscript\calculatevariables.ts" />
+    <TypeScriptCompile Include="src\component\rscript\assignparameters.ts" />
+    <TypeScriptCompile Include="src\component\rscript\format.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\ifsection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\objectmodel.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\sectionbase.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\expexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\pulseexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\conditionalsection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\terminalsection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\notexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\unaryplusminusexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\rswexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\integexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\dynamicsection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\infixexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\discretesection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\derivativesection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\initialsection.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\subexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\muldivexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\addsubexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\idexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\floatexpression.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\statement.ts" />
+    <TypeScriptCompile Include="src\component\cslfile.ts" />
+    <TypeScriptCompile Include="src\component\acslscript\acslprogram.ts" />
+    <TypeScriptCompile Include="src\component\system\js.ts" />
+    <TypeScriptCompile Include="src\interface.ts" />
+    <TypeScriptCompile Include="src\enum.ts" />
+    <TypeScriptCompile Include="src\index.ts" />
+    <TypeScriptCompile Include="src\version.ts" />
+    <TypeScriptCompile Include="src\component\acsl2rworker.ts" />
+    <TypeScriptCompile Include="typings\app.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ANTLRErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ANTLRErrorStrategy.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ANTLRInputStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\AbstractPredicateTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ActionTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\AmbiguityInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATN.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNConfig.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNConfigSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNDeserializationOptions.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNDeserializer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNSimulator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNStateType.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ATNType.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\AtomTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\BasicBlockStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\BasicState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\BlockEndState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\BlockStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ConflictInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ContextSensitivityInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\DecisionEventInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\DecisionInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\DecisionState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\EpsilonTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ErrorInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\InvalidState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerActionExecutor.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerActionType.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerATNSimulator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerChannelAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerCustomAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerIndexedCustomAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerModeAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerMoreAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerPopModeAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerPushModeAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerSkipAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LexerTypeAction.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LL1Analyzer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LookaheadEventInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\LoopEndState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\NotSetTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\OrderedATNConfigSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ParseInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ParserATNSimulator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PlusBlockStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PlusLoopbackState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PrecedencePredicateTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PredicateEvalInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PredicateTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PredictionContext.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PredictionContextCache.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\PredictionMode.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\ProfilingATNSimulator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\RangeTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\RuleStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\RuleStopState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\RuleTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\SemanticContext.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\SetTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\SimulatorState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\StarBlockStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\StarLoopbackState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\StarLoopEntryState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\TokensStartState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\Transition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\TransitionType.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\atn\WildcardTransition.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\BailErrorStrategy.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\BaseErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\BufferedTokenStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\CharStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\CommonToken.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\CommonTokenFactory.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\CommonTokenStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ConsoleErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Decorators.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\DefaultErrorStrategy.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Dependents.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\AcceptStateInfo.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\DFA.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\DFASerializer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\DFAState.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\dfa\LexerDFASerializer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\DiagnosticErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\FailedPredicateException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\InputMismatchException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\InterpreterRuleContext.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\IntStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Lexer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\LexerInterpreter.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\LexerNoViableAltException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ListTokenSource.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Args.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Array2DHashMap.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Array2DHashSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\ArrayEqualityComparator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Arrays.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\BitSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\DefaultEqualityComparator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\EqualityComparator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\IntegerList.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\IntegerStack.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Interval.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\IntervalSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\IntSet.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\MultiMap.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\MurmurHash.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\ObjectEqualityComparator.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\ParseCancellationException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Stubs.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\Utils.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\misc\UUID.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\NoViableAltException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Parser.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ParserErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ParserInterpreter.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ParserRuleContext.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ProxyErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\ProxyParserErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\RecognitionException.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Recognizer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\RuleContext.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\RuleContextWithAltNum.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\RuleDependency.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\RuleVersion.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Token.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\TokenFactory.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\TokenSource.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\TokenStream.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\TokenStreamRewriter.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\AbstractParseTreeVisitor.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ErrorNode.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ParseTree.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ParseTreeListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ParseTreeProperty.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ParseTreeVisitor.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\ParseTreeWalker.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\Chunk.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\ParseTreeMatch.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\ParseTreePattern.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\ParseTreePatternMatcher.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\RuleTagToken.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\TagChunk.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\TextChunk.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\pattern\TokenTagToken.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\RuleNode.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\SyntaxTree.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\TerminalNode.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\Tree.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\Trees.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPath.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathLexer.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathLexerErrorListener.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathRuleAnywhereElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathRuleElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathTokenAnywhereElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathTokenElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathWildcardAnywhereElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\tree\xpath\XPathWildcardElement.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\Vocabulary.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\VocabularyImpl.d.ts" />
+    <TypeScriptCompile Include="typings\globals\antlr4ts\WritableToken.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>40938</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:40938/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
